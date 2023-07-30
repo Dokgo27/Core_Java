@@ -23,17 +23,26 @@ class TalkingClock {
      * 시계를 시작합니다.
      */
     public void start() {
+        // local class
+        class TimePrinter implements ActionListener {
+            public void actionPerformed(ActionEvent event) {
+                System.out.println("At the tone, the time is " + Instant.ofEpochMilli(event.getWhen()));
+                if (beep) Toolkit.getDefaultToolkit().beep();
+            }
+        }
         var listener = new TimePrinter();
         var timer = new Timer(interval, listener);
         timer.start();
     }
 
+    /**
     public class TimePrinter implements ActionListener {
         public void actionPerformed(ActionEvent event) {
             System.out.println("At the tone, the time is " + Instant.ofEpochMilli(event.getWhen()));
             if (beep) Toolkit.getDefaultToolkit().beep();
         }
     }
+     */
 }
 
 public class InnerClassTest {
@@ -46,3 +55,5 @@ public class InnerClassTest {
         System.exit(0);
     }
 }
+
+
