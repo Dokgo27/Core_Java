@@ -23,28 +23,37 @@ class TalkingClock {
      * 시계를 시작합니다.
      */
     public void start() {
-        // local class
+        /** local class
         class TimePrinter implements ActionListener {
             public void actionPerformed(ActionEvent event) {
                 System.out.println("At the tone, the time is " + Instant.ofEpochMilli(event.getWhen()));
                 if (beep) Toolkit.getDefaultToolkit().beep();
             }
         }
+        */
         var listener = new TimePrinter();
         var timer = new Timer(interval, listener);
         timer.start();
     }
-
-    /**
     public class TimePrinter implements ActionListener {
         public void actionPerformed(ActionEvent event) {
             System.out.println("At the tone, the time is " + Instant.ofEpochMilli(event.getWhen()));
             if (beep) Toolkit.getDefaultToolkit().beep();
         }
     }
+    /** Anonymous Inner Class
+    public void start(int interval, boolean beep) {
+        var listener = new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                System.out.println("At the tone, the time is " + Instant.ofEpochMilli(event.getWhen()));
+                if (beep) Toolkit.getDefaultToolkit().beep();
+            }
+        };
+        var timer = new Timer(interval, listener);
+        timer.start();
+    }
      */
 }
-
 public class InnerClassTest {
     public static void main(String[] args) {
         var clock = new TalkingClock(1000, true);
@@ -56,4 +65,16 @@ public class InnerClassTest {
     }
 }
 
+package com.javabom.nested;
 
+public class Outer {
+    private int out;
+
+    public static class StaticInner {
+        private int in;
+    }
+
+    public class NonStaticInner {
+        private int in;
+    }
+}
