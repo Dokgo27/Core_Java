@@ -1,0 +1,6 @@
+8월 20, 2023 5:09:22 오후 logging.FileHandlerExample main
+정보: This is an informational message.
+8월 20, 2023 5:09:22 오후 logging.FileHandlerExample main
+경고: This is a warning message.
+8월 20, 2023 5:09:22 오후 logging.FileHandlerExample main
+심각: This is a severe message.
